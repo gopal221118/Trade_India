@@ -21,13 +21,10 @@ public class KA_BLR_Trade_Main {
 			System.out.println(xlsxMapCol.get(2).get(5));
 			System.out.println(xlsxMapCol.get(2).get(6));
 			System.out.println(xlsxMapCol.get(2).get(7));
-<<<<<<< HEAD
-			System.out.println(xlsxMapCol.get(2).get(9));
-=======
 			System.out.println(xlsxMapCol.get(2).get(8));
 			System.out.println(xlsxMapCol.get(2).get(9));
 			System.out.println(xlsxMapCol.get(2).get(10));
->>>>>>> 34e689c2f4fbfdcad08e619677d37430fb3f871a
+			System.out.println(xlsxMapCol.get(2).get(11));
 			System.out.println(xlsxMapHeader.get(2).get("Company Category"));
 
 		
