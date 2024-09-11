@@ -5,6 +5,16 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>Trade_India</name>
   <dependencies>
+  <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>5.5.2</version>
+        </dependency>
+         <dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-csv</artifactId>
+    <version>1.10.0</version>
+</dependency>
 	<dependency>
       <groupId>org.apache.poi</groupId>
       <artifactId>poi</artifactId>
@@ -32,6 +42,26 @@
       <artifactId>opencsv</artifactId>
       <version>5.5.2</version>
     </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.30</version>
+        </dependency>
+
+        <!-- Optional: SLF4J Simple for basic logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.30</version>
+        </dependency>
+
+        <!-- JUnit for testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
 
     <!-- Jsoup for HTML parsing -->
     <dependency>
