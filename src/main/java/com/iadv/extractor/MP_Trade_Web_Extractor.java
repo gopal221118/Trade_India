@@ -18,7 +18,7 @@ public class MP_Trade_Web_Extractor {
 
 
 
-	public static boolean  extractMPTradeValues(WebDriver driver,Map<String,ArrayList<String>> data)  {
+	public static boolean  extractMPTradeValues(WebDriver driver,Map<String,ArrayList<String>> data, String filename)  {
 
 		 XSSFWorkbook workbook = new XSSFWorkbook();
 
@@ -49,7 +49,7 @@ public class MP_Trade_Web_Extractor {
 //Write the workbook in file system
 
 		try {
-			FileOutputStream out = new FileOutputStream(new File("MP_TRADE_DATA.xlsx"));
+			FileOutputStream out = new FileOutputStream(new File(filename+".xlsx"));
 			workbook.write(out);
 			out.close();
 			System.out.println("howtodoinjava_demo.xlsx written successfully on disk.");
