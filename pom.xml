@@ -3,6 +3,10 @@
   <groupId>Trade_India</groupId>
   <artifactId>Trade_India</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <properties>
+    <maven.compiler.source>16</maven.compiler.source>
+    <maven.compiler.target>16</maven.compiler.target>
+  </properties>
   <name>Trade_India</name>
   <dependencies>
   <dependency>
@@ -93,6 +97,21 @@
       <artifactId>json-path</artifactId>
       <version>4.4.0</version>
     </dependency>
+
+
+      <!-- Apache POI for .xlsx support -->
+      <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi-ooxml</artifactId>
+        <version>5.2.3</version> <!-- or latest version -->
+      </dependency>
+      <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi</artifactId>
+        <version>5.2.3</version> <!-- or latest version -->
+      </dependency>
+
+
 
     <!-- JSON library -->
     <dependency>
