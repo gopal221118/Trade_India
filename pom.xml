@@ -105,5 +105,23 @@
     <artifactId>selenium-java</artifactId>
     <version>4.23.1</version>
 </dependency>
+<dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.7.30</version>
+    </dependency>
+    
+    <!-- JUnit for testing (optional) -->
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.12</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+    <groupId>org.apache.httpcomponents.client5</groupId>
+    <artifactId>httpclient5</artifactId>
+    <version>5.1</version>
+</dependency>
   </dependencies>
 </project>
