@@ -1,5 +1,7 @@
 package com.iadv.mp;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.util.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -7,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.opencsv.CSVWriter;
 
 public class MP_Trade_Selenium {
 
@@ -38,7 +42,7 @@ public class MP_Trade_Selenium {
 	static int temp = 1;
 
 	public static void getSearchValues(WebDriver driver, WebDriverWait wait, String licno, String city, String url,
-			Map<String, ArrayList<String>> data) {
+			CSVWriter writer,String folderpath) {
 		try {
 			WebElement inputBox = driver.findElement(By.xpath("(//span[contains(@class,\"urEdf2Whl\")]/input)[1]"));
 			inputBox.sendKeys(licno);
@@ -56,15 +60,18 @@ public class MP_Trade_Selenium {
 
 			if (tablevalue.size() == 18) {
 				System.out.println(tablevalue.size());
-				ArrayList<String> list = new ArrayList<>();
+				ArrayList<String> list = new ArrayList<String>();
+				File file=new File(folderpath+File.separator+licno+".txt");
+	            FileWriter fw=new FileWriter(file);
 				for (int i = 0; i < tablevalue.size(); i++) {
 					if (i % 2 != 0) {
 						list.add(tablevalue.get(i).getText().toString());
+						fw.write(tablevalue.get(i-1).getText().toString()+" :: "+tablevalue.get(i).getText().toString()+"\r\n");
 					}
 				}
-
-				data.put(String.valueOf(temp), list);
-				temp++;
+				String[] temparray = list.toArray(new String[0]);
+                writer.writeNext(temparray);
+                fw.close();
 			}
 
 			driver.findElement(By.id("WD38")).clear();
