@@ -66,7 +66,7 @@ public class Hyd_Trade_API {
             response.append(inputLine);
         }
         in.close();
-
+         
         // Return the response as a string
         return response.toString();
     }
