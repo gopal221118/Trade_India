@@ -1,20 +1,20 @@
 package com.iadv.main;
 
+import com.iadv.extractor.*;
+
 
 
 import org.jsoup.Jsoup;
 
 import org.jsoup.nodes.Document;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.*;
 
-public class Andhra_trade_details_main {
-    public static void main(String[] args) {
+public class Andhra_trade_details_main1 {
+    @SuppressWarnings("resource")
+	public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-
+      
         String[] municipalities = {
         	    // Municipal Corporations (17)
         	    "visakhapatnam", "vijayawada", "guntur", "nellore", "kurnool", "tirupati",
@@ -68,23 +68,15 @@ public class Andhra_trade_details_main {
 
         for (int m = start; m <= end; m++) {
             for (int i = idStart; i <= idEnd; i++) {
-                String url = "https://" + municipalitiesList.get(m) + ".emunicipal.ap.gov.in/tl/viewtradelicense/viewTradeLicense-view.action?id=" + i;
-                String filePath = args[0] + "\\pageSource" + municipalitiesList.get(m) + i + ".html"; // Specify your file path here
-
-                try {
-                    // Fetch the HTML document
-                    Document document = Jsoup.connect(url).get();
-                    // Get the page source as a string
-                    String pageSource = document.outerHtml();
-
-                    // Write the page source to a text file
-                    try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-                        writer.write(pageSource);
-                        System.out.println("Page source written to " + filePath);
-                    }
-                } catch (IOException e) {
-                    System.err.println("Error fetching the page source: " + e.getMessage());
-                }
+            	HashMap<String,String> hmap = new HashMap<>();
+            	String muncipalname =municipalitiesList.get(m);
+                String urlid = "https://" + municipalitiesList.get(m) + ".emunicipal.ap.gov.in/tl/viewtradelicense/viewTradeLicense-view.action?id=" + i;
+                String filePathidpage = args[0];
+                // Specify your file path here
+                String filepathviewpage =args[0];
+                String filepathshowpage =args[0];
+                Andhra_Exctractor.SecondStep(hmap,urlid, filePathidpage, filepathviewpage, filepathshowpage,muncipalname);
+                
             }
         }
         scan.close();
