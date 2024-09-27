@@ -20,33 +20,28 @@ public class TGSPDCL_mobile_main {
         
         TGSPDCL_mobile_api api = new TGSPDCL_mobile_api();
         TGSPDCL_mobile_Extractor extractor = new TGSPDCL_mobile_Extractor();
-        TGSPDCL_Mobile_data dataWriter = new TGSPDCL_Mobile_data();
         
         // ArrayList to store responses (optional)
         ArrayList<String> responses = new ArrayList<>();
         // HashMap to store extracted data
         HashMap<String, HashMap<String, String>> dataMap = new HashMap<>();
-        
+        int count=1;
         for (int uniqueServiceNumber = startRange; uniqueServiceNumber <= endRange; uniqueServiceNumber++) {
             try {
                 // Fetch the response for each unique service number
                 String response = api.getResponse(String.valueOf(uniqueServiceNumber));
                 responses.add(response);
-                
-                // Extract the data from the response
-                HashMap<String, String> extractedData = extractor.extractData(response);
-                
+                 extractor.extractData(response,args[3]);
+                System.out.println(count+" : Data is running");
+                System.out.println("****************************************************");
+                count++;
                 // Store the extracted data in the HashMap
-                dataMap.put(String.valueOf(uniqueServiceNumber), extractedData);
             } catch (Exception e) {
                 System.out.println("Error fetching data for unique service number: " + uniqueServiceNumber);
                 e.printStackTrace();
             }
         }
-        
-        // Write data to CSV file
-        dataWriter.writeDataToCSV(dataMap,filepath);
-        
+         
         // Print the extracted data
         for (String uniqueServiceNumber : dataMap.keySet()) {
             System.out.println("Unique Service Number: " + uniqueServiceNumber);

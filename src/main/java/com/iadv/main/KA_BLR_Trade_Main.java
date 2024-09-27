@@ -27,7 +27,7 @@ public class KA_BLR_Trade_Main {
 			System.out.println(xlsxMapCol.get(2).get(11));
 			System.out.println(xlsxMapCol.get(2).get(12));
 			System.out.println(xlsxMapHeader.get(2).get("Company Category"));
-
+            System.out.println("test");
 		
 			
 		} catch (Exception e) {
