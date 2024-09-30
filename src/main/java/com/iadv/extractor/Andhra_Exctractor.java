@@ -10,8 +10,9 @@ import java.util.HashMap;
 
 public class Andhra_Exctractor {
 
-    public static void SecondStep(HashMap<String, String> hmap, String urlid, String filePathidpage, String filepathviewpage, String filepathshowpage, String munname) {
-        try {
+    public static HashMap<String,String> SecondStep(HashMap<String, String> hmap, String urlid, String filePathidpage, String filepathviewpage, String filepathshowpage, String munname) {
+        
+    	try {
             // Fetch the HTML document
             Document document = Jsoup.connect(urlid).get();
             String pageSourceid = document.outerHtml();
@@ -35,7 +36,7 @@ public class Andhra_Exctractor {
            
 
             // Traverse the elements using the provided CSS selector
-            HashMap<String, String> tradeDetailsMap = new HashMap<>();
+            
             for (int j = 2; j <= 6; j++) {
                 Elements elements = document.select("#tradedetails > div:nth-child(" + j + ") > div > div");
                 // Loop through the elements and apply the odd-even key-value mapping
@@ -47,7 +48,7 @@ public class Andhra_Exctractor {
                             value = "N/A";
                         }
 
-                        tradeDetailsMap.put(key, value);
+                        hmap.put(key, value);
                     }
                 }
             }
@@ -70,7 +71,7 @@ public class Andhra_Exctractor {
                         }
 
                         // Add the key-value pair to the HashMap
-                        tradeDetailsMap.put(key, value);
+                        hmap.put(key, value);
                        
                     }
                 }
@@ -91,22 +92,24 @@ public class Andhra_Exctractor {
                         }
 
                         // Add the key-value pair to the HashMap
-                        tradeDetailsMap.put(key, value);
+                        hmap.put(key, value);
                     }
                 }
                 }
 
-                tradeDetailsMap.put("ViewpageLink",urlview);
-                tradeDetailsMap.put("ShowPageLink", urlshow );
-                Andhra_writer_1.writeToFile(pageSourceview,filepathviewpage+"\\"+tradeDetailsMap.get("Application No.")+tradeDetailsMap.get("License No.")+"pageSourceView.html");
-                Andhra_writer_1.writeToFile(pageSourceshow,filepathshowpage+"\\"+tradeDetailsMap.get("Application No.")+tradeDetailsMap.get("License No.")+"pageSourceShow.html");
-                Andhra_writer_1.writeToFile(pageSourceid, filePathidpage+"\\"+tradeDetailsMap.get("Application No.")+tradeDetailsMap.get("License No.")+"pageSourceid.html");
+              hmap.put("ViewpageLink",urlview);
+              hmap.put("ShowPageLink", urlshow );
+               hmap.put("muncipalty",munname);
+                Andhra_writer_1.writeToFile(pageSourceview,filepathviewpage+"\\"+hmap.get("Application No.")+" "+hmap.get("License No.")+"pageSourceView.html");
+                Andhra_writer_1.writeToFile(pageSourceshow,filepathshowpage+"\\"+hmap.get("Application No.")+" "+hmap.get("License No.")+"pageSourceShow.html");
+                Andhra_writer_1.writeToFile(pageSourceid, filePathidpage+"\\"+hmap.get("Application No.")+" "+hmap.get("License No.")+"pageSourceid.html");
             // Print the HashMap to the console
-            System.out.println("Trade Details Map: " + tradeDetailsMap);
+            System.out.println("Trade Details Map: " + hmap);
            
         } catch (IOException e) {
             System.err.println("Error fetching the page source: " + e.getMessage());
         } 
+    	return hmap;
        
     }
          

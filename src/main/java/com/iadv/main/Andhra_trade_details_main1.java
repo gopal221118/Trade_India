@@ -4,6 +4,7 @@ import com.iadv.extractor.*;
 
 
 
+import com.iadv.data.Andhra_writer2;
 import org.jsoup.Jsoup;
 
 import org.jsoup.nodes.Document;
@@ -14,7 +15,7 @@ public class Andhra_trade_details_main1 {
     @SuppressWarnings("resource")
 	public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-      
+        HashMap<String, HashMap<String, String>> outerMap = new HashMap<>();
         String[] municipalities = {
         	    // Municipal Corporations (17)
         	    "visakhapatnam", "vijayawada", "guntur", "nellore", "kurnool", "tirupati",
@@ -65,7 +66,7 @@ public class Andhra_trade_details_main1 {
             System.err.println("Please enter valid integers for the ID range.");
             return; // Exit if parsing fails
         }
-
+      
         for (int m = start; m <= end; m++) {
             for (int i = idStart; i <= idEnd; i++) {
             	HashMap<String,String> hmap = new HashMap<>();
@@ -75,10 +76,12 @@ public class Andhra_trade_details_main1 {
                 // Specify your file path here
                 String filepathviewpage =args[0];
                 String filepathshowpage =args[0];
-                Andhra_Exctractor.SecondStep(hmap,urlid, filePathidpage, filepathviewpage, filepathshowpage,muncipalname);
-                
+                HashMap<String,String> innermap=Andhra_Exctractor.SecondStep(hmap,urlid, filePathidpage, filepathviewpage, filepathshowpage,muncipalname);
+                outerMap.put(String.valueOf(m)+muncipalname+String.valueOf(i), innermap);
+               
             }
         }
+        Andhra_writer2.writeToCSV(args[1], outerMap);
         scan.close();
     }
 }
