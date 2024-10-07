@@ -2,7 +2,7 @@ package com.iadv.main;
 import java.util.*;
 
 import com.iadv.data.TN_property_reader1;
-public class TN_property_tax_with_contact_main {
+public class TN1_property_tax_with_contact_main {
     public static void main(String[] args) {
         // Check if the file path is provided in the command-line arguments
         if (args.length == 0) {
