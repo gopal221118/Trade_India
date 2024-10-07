@@ -1,6 +1,7 @@
 package com.iadv.csvmerger;
 
 import java.io.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,10 +9,10 @@ public class General_csvmerger {
 
     public static void main(String[] args) {
         // Directory containing the CSV files
-        String csvDirectory = "E:\\Telengana_TL\\Hyderabad\\hyderabad_parts";
+        String csvDirectory = "C:\\Rocjar\\inputfile";
         
         // Output file path
-        String outputFilePath = "E:\\Telengana_TL\\Hyderabad\\full data\\hyd_data.csv";
+        String outputFilePath = "C:\\Rocjar\\inputfile\\output1.xlsx";
 
         // List to store CSV file names
         List<String> csvFiles = new ArrayList<>();
