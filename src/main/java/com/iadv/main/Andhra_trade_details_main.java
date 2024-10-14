@@ -41,7 +41,7 @@ public class Andhra_trade_details_main {
 
         System.out.println("0-16 will be the municipal corporation so provide id between 1-9999");
         ArrayList<String> municipalitiesList = new ArrayList<>(Arrays.asList(municipalities));
-        System.out.println("Enter the municipalities range in index value format:");
+        
         
         int start = scan.nextInt();
         int end = scan.nextInt();

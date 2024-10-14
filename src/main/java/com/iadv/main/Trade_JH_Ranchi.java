@@ -28,7 +28,7 @@ public class Trade_JH_Ranchi {
 
 			try {
 				writer = new CSVWriter(new FileWriter(csvFile));
-				writer.writeNext(new String[] {"Ward_No","Application_No","Licence_No","Owner_Name","Firm_Name","Mobile_No","Link"
+				writer.writeNext(new String[] {"SI.No","Ward_No","Application_No","Licence_No","Owner_Name","Firm_Name","Mobile_No","Link"
  });
 			} catch (IOException e) {
 				e.printStackTrace();

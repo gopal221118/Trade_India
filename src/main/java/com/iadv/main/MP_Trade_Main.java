@@ -21,6 +21,7 @@ public class MP_Trade_Main {
 			String csvFile = args[5];
 	        CSVWriter writer = null;
 	        
+	        
 	        try {
 	            writer = new CSVWriter(new FileWriter(csvFile));
 	              writer.writeNext(new String[]{"lic no.", "Trader Name", "Firm Name",
