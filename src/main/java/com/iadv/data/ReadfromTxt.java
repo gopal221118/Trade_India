@@ -1,7 +1,10 @@
 package com.iadv.data;
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 9962da8daebcff690cf70b349fa50881c7d570ab
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -31,4 +34,8 @@ public class ReadfromTxt {
 	        return lines; 
 	    }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 9962da8daebcff690cf70b349fa50881c7d570ab

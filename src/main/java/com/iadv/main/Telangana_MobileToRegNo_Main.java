@@ -33,8 +33,8 @@ public class Telangana_MobileToRegNo_Main {
     		for(int i=Integer.parseInt(ranges[0]);i<Integer.parseInt(ranges[1]);i++)
     	    {
     			System.out.println("*********************************");
-    	    	String html=Trade_Mobile_API.getHTMLResponse(mobileMap.get(i).get(0));
-    	    	Telangana_MobileToRegNo_Extraxtor.extractHTMLResponse(html,writer);
+    	    	//String html=Trade_Mobile_API.getHTMLResponse(mobileMap.get(i).get(0));
+    	    	//Telangana_MobileToRegNo_Extraxtor.extractHTMLResponse(html,writer);
     	    	System.out.println("************************************************");
     	    }
     	writer.close();
