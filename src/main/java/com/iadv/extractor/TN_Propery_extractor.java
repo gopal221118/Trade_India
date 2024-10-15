@@ -20,22 +20,22 @@ public class TN_Propery_extractor {
                 {
         	       String response1=TN_PropertyTax_API2.getAPIResponse(vs, ev, munci_no,munci_no_with_ward_no.get(munci_no).get(i));
         	       Document doc = Jsoup.parse(response1);
-        	       Element element = doc.selectFirst("#PageContent_lblview");
+        	       Element element = doc.selectFirst("#asda > div:nth-child(2) > div:nth-child(2)>i");
 
         	    // Get the text inside the <i> tag
         	       String text = null;
         	    if (element != null) {
-        	          text = element.text();
+        	          text = element.text();  // if the text is null or element is null then add continue statement for this i variable iteration
         	        System.out.println(text);  // Prints: You are viewing page 1 of 4
         	    } else {
-        	        System.out.println("Element not found!");
+        	        continue;
         	    }
         	    char lastChar = text.charAt(text.length() - 1);
-        	    int pages = Character.getNumericValue(lastChar);
+        	    Integer pages = Character.getNumericValue(lastChar);
        	        for(int j=1;j<=pages;j++)
        	        {
        	        	String response2=TN_PropertyTax_API3.getAPIResponse(vs, ev, munci_no,munci_no_with_ward_no.get(munci_no).get(i) , pages);
-       	        	Document doc1 = Jsoup.parse(response2);
+       	        	
        	      // Parse the HTML response
        	        	Document doc2 = Jsoup.parse(response2);
 
@@ -52,6 +52,7 @@ public class TN_Propery_extractor {
        	        	
        	        }
                 }
-           }
+           
+           }return assesment_no;
         }
 }

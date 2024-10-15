@@ -7,6 +7,7 @@ import java.util.*;
 import com.iadv.api.TN_PropertyTax_API;
 import com.iadv.data.ReadfromTxt;
 import com.iadv.data.TN_property_reader1;
+import com.iadv.extractor.TN_Propery_extractor;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -20,7 +21,8 @@ public class TN1_property_tax_with_contact_main {
             System.out.println("Error: No file path provided. Please provide the path to the Excel file as a command-line argument.");
             return;
         }
-        
+        String vs = ReadfromTxt.readFileAsString(args[1]);
+        String ev = ReadfromTxt.readFileAsString(args[2]);
         // Get the file path from the first argument
         String filePath = args[0];
         // Create an instance of the reader class
@@ -45,8 +47,7 @@ public class TN1_property_tax_with_contact_main {
             FileWriter fw = new FileWriter(file);
             
             // Read form parameters
-            String vs = ReadfromTxt.readFileAsString(args[1]);
-            String ev = ReadfromTxt.readFileAsString(args[2]);
+           
             
             // Get API response
             String resp = TN_PropertyTax_API.getAPIResponse(vs, ev, new ArrayList<String>(municipalityMap.keySet()).get(i));
@@ -81,6 +82,14 @@ public class TN1_property_tax_with_contact_main {
             e.printStackTrace();
         }
         }
-        
+        for(String code:munci_no_with_ward_no.keySet())
+        {
+            System.out.println(code+":"+munci_no_with_ward_no.get(code));	
+        }
+       ArrayList<String> assesment_nos=TN_Propery_extractor.extractorAndhra(vs, ev, munci_no_with_ward_no);
+       for(String assesment_no:assesment_nos)
+     {
+        	System.out.println(assesment_no);
+       }
     }
 }
