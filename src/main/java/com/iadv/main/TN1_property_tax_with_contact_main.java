@@ -1,12 +1,13 @@
 package com.iadv.main;
 
 import java.io.File;
+
 import java.io.FileWriter;
 import java.util.*;
 
 import com.iadv.api.TN_PropertyTax_API;
 import com.iadv.data.ReadfromTxt;
-import com.iadv.data.TN_property_reader1;
+import com.iadv.data.*;
 import com.iadv.extractor.TN_Propery_extractor;
 
 import org.jsoup.Jsoup;
@@ -91,5 +92,6 @@ public class TN1_property_tax_with_contact_main {
      {
         	System.out.println(assesment_no);
        }
+       Writer_TN_property_1.writeToCSV(assesment_nos, args[3]);
     }
 }
