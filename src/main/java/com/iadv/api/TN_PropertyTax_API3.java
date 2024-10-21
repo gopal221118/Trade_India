@@ -7,9 +7,9 @@ import static io.restassured.RestAssured.given;
 
 import java.util.HashMap;
 
-public class TN_PropertyTax_API {
+public class TN_PropertyTax_API3 {
 
-    public static String getAPIResponse(String vs,String ev,String muncipalcode) {
+    public static String getAPIResponse(String vs,String ev,String muncipalcode,String wardno,int pageno) {
     	String resp="";
     	try
     	{
@@ -37,7 +37,7 @@ public class TN_PropertyTax_API {
                 .header("upgrade-insecure-requests", "1")
                 .header("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36")
                 .formParam("__EVENTTARGET", "")
-                .formParam("__EVENTARGUMENT", "")
+                .formParam("__EVENTARGUMENT", "Page$"+pageno)
                 .formParam("__LASTFOCUS", "")
                 .formParam("__VIEWSTATE", vs)
                 .formParam("__VIEWSTATEGENERATOR", "3B37067B")
@@ -46,7 +46,7 @@ public class TN_PropertyTax_API {
                 .formParam("ctl00$alert_msg", "")
                 .formParam("ctl00$PageContent$drporg",muncipalcode)
                 .formParam("ctl00$PageContent$txt_assementno", "")
-                .formParam("ctl00$PageContent$drpward", "5158")
+                .formParam("ctl00$PageContent$drpward",wardno)
                 .formParam("ctl00$PageContent$txt_AssesseName", "")
                 .formParam("ctl00$PageContent$drppropetgrup", "--Select--")
                 .formParam("ctl00$PageContent$txtOldAssNo", "")

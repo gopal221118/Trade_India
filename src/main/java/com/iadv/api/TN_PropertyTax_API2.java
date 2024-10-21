@@ -1,15 +1,18 @@
 package com.iadv.api;
 
+
+
 import io.restassured.RestAssured;
+
 import io.restassured.config.SSLConfig;
 import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 
 import java.util.HashMap;
 
-public class TN_PropertyTax_API {
+public class TN_PropertyTax_API2 {
 
-    public static String getAPIResponse(String vs,String ev,String muncipalcode) {
+    public static String getAPIResponse(String vs,String ev,String muncipalcode,String ward_no) {
     	String resp="";
     	try
     	{
@@ -46,7 +49,7 @@ public class TN_PropertyTax_API {
                 .formParam("ctl00$alert_msg", "")
                 .formParam("ctl00$PageContent$drporg",muncipalcode)
                 .formParam("ctl00$PageContent$txt_assementno", "")
-                .formParam("ctl00$PageContent$drpward", "5158")
+                .formParam("ctl00$PageContent$drpward", ward_no)
                 .formParam("ctl00$PageContent$txt_AssesseName", "")
                 .formParam("ctl00$PageContent$drppropetgrup", "--Select--")
                 .formParam("ctl00$PageContent$txtOldAssNo", "")
