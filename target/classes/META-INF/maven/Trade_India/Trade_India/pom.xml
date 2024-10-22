@@ -183,5 +183,10 @@
 			<artifactId>httpcore5</artifactId>
 			<version>5.2</version> <!-- Use the latest version -->
 		</dependency>
+		<dependency>
+			<groupId>Andhra_Trade_license</groupId>
+			<artifactId>Andhra_Trade_license</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 </project>

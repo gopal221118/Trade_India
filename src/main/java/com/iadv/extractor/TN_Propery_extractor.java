@@ -2,6 +2,7 @@ package com.iadv.extractor;
 
 import java.util.ArrayList;
 
+
 import java.util.HashMap;
 
 
@@ -35,7 +36,7 @@ public class TN_Propery_extractor {
         	    Integer pages = Character.getNumericValue(lastChar);
        	        for(int j=1;j<=pages;j++)
        	        {
-       	        	String response2=TN_PropertyTax_API3.getAPIResponse(vs, ev, munci_no,munci_no_with_ward_no.get(munci_no).get(i) , pages);
+       	        	String response2=TN_PropertyTax_API3.getAPIResponse(vs, ev, munci_no,munci_no_with_ward_no.get(munci_no).get(i) , j);
        	        	
        	      // Parse the HTML response
        	        	Document doc2 = Jsoup.parse(response2);
