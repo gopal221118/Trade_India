@@ -69,6 +69,7 @@ public class MP_Trade_Selenium {
 						fw.write(tablevalue.get(i-1).getText().toString()+" :: "+tablevalue.get(i).getText().toString()+"\r\n");
 					}
 				}
+				System.out.println("Running Now for child:"+ licno);
 				String[] temparray = list.toArray(new String[0]);
                 writer.writeNext(temparray);
                 fw.close();
