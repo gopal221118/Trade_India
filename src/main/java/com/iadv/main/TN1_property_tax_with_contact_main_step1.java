@@ -8,6 +8,8 @@ import java.util.*;
 
 import com.iadv.api.TN_PropertyTax_API;
 import com.iadv.data.ReadfromTxt;
+import com.iadv.data.StringSearchInFile;
+import com.iadv.extractor.TN_Propery_extractor;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -40,25 +42,38 @@ public class TN1_property_tax_with_contact_main_step1 {
 
         for (String key : mncmap.keySet()) {
             try {
-                File file = new File(args[0] + File.separator + mncmap.get(key) + ".html");
-                FileWriter fw = new FileWriter(file);
                 String postdata = ReadfromTxt.readFileAsString(args[0] + File.separator + mncmap.get(key) + ".txt");
-
                 String[] postvals = postdata.split("&");
                 String vsx = "";
                 String evx = "";
-
+                String etx = "";
+                String ecode = "";
                 for (String postval : postvals) {
                     if (postval.startsWith("__VIEWSTATE=")) {
                         vsx = postval.split("=")[1].trim();
-                    } else if (postval.startsWith("__EVENTVALIDATION=")) {
-                        evx = postval.split("=")[1].trim();
-                    } else {
+                    } 
+                    else if (postval.startsWith("__EVENTTARGET=")) {
+                        etx=postval.split("=")[1].trim();
+                       
+                    } 
+                    else if (postval.startsWith("ctl00%24PageContent%24drporg=")) {
+                        ecode=postval.split("=")[1].trim();
+                         
+                      } 
+                    
+                    else if(postval.startsWith("__EVENTVALIDATION")) {
+                   	 evx   =postval.split("=")[1].trim();
+
+                   }
+                    else {
                         System.out.println(postval);
                     }
                 }
-
-                String resp = TN_PropertyTax_API.getAPIResponse(postdata, fw);
+               System.out.println(vsx);
+               System.out.println(evx);
+               System.out.println(etx);
+               System.out.println(ecode);
+                String resp = TN_PropertyTax_API.getAPIResponse(postdata);
                 Document doc = Jsoup.parse(resp);
                 Elements options = doc.select("#PageContent_drpward > option");
 
@@ -71,7 +86,7 @@ public class TN1_property_tax_with_contact_main_step1 {
                     }
                 }
 
-                munci_no_with_ward_no.put(key, wardValues);
+                munci_no_with_ward_no.put(ecode, wardValues);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -81,5 +96,8 @@ public class TN1_property_tax_with_contact_main_step1 {
         for (String code : munci_no_with_ward_no.keySet()) {
             System.out.println(code + ":" + munci_no_with_ward_no.get(code));
         }
+       
+        ArrayList<String> assesment =TN_Propery_extractor.extractorTn(munci_no_with_ward_no, mnc, mncmap);
+        System.out.println(assesment);
     }
 }

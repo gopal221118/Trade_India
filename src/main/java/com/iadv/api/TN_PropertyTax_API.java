@@ -13,7 +13,7 @@ import java.io.FileWriter;
 
 public class TN_PropertyTax_API {
 
-    public static String getAPIResponse(String postdata, FileWriter fw) {
+    public static String getAPIResponse(String postdata) {
         String resp = "";
         try {
             RestAssured.baseURI = "https://tnurbanepay.tn.gov.in";
@@ -27,8 +27,7 @@ public class TN_PropertyTax_API {
 
             resp = response.getBody().asString();
             System.out.println("Response Status Code: " + response.getStatusCode());
-            fw.write(resp);
-            fw.close();
+       
 
         } catch (Exception e) {
             e.printStackTrace();

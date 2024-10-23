@@ -37,6 +37,11 @@
 			<version>4.1.2</version>
 		</dependency>
 		<dependency>
+  <groupId>com.squareup.okhttp3</groupId>
+  <artifactId>okhttp</artifactId>
+  <version>4.9.3</version>
+</dependency>
+		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>2.8.9</version>
@@ -183,10 +188,12 @@
 			<artifactId>httpcore5</artifactId>
 			<version>5.2</version> <!-- Use the latest version -->
 		</dependency>
+		
 		<dependency>
-			<groupId>Andhra_Trade_license</groupId>
-			<artifactId>Andhra_Trade_license</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+    <groupId>org.jsoup</groupId>
+    <artifactId>jsoup</artifactId>
+    <version>1.16.1</version>
+</dependency>
+
 	</dependencies>
 </project>
