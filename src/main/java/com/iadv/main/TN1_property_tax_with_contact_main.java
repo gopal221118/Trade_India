@@ -43,18 +43,12 @@ public class TN1_property_tax_with_contact_main {
         System.out.println(new ArrayList<String>(municipalityMap.keySet()).get(i));
         
         try {
-            // Prepare the output file
-            File file = new File("C:\\ajay\\qatar1" + new ArrayList<String>(municipalityMap.keySet()).get(i) + ".html");
-            FileWriter fw = new FileWriter(file);
-            
-            // Read form parameters
-           
+          
             
             // Get API response
             String resp = TN_PropertyTax_API.getAPIResponse(vs, ev, new ArrayList<String>(municipalityMap.keySet()).get(i));
             // Write response to HTML file
-            fw.write(resp);
-            fw.close();
+        
             
             // Now, let's parse the HTML response and extract the <option> values
             Document doc = Jsoup.parse(resp);
