@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public class TN_property_reader1 {
 
-    public HashMap<String, String> readExcel(String filePath) {
+    public  HashMap<String, String> readExcel(String filePath) {
         HashMap<String, String> municipalityMap = new HashMap<>();
 
         try (FileInputStream fis = new FileInputStream(new File(filePath));
