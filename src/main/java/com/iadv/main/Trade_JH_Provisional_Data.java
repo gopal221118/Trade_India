@@ -15,7 +15,9 @@ public class Trade_JH_Provisional_Data {
 	public static void main(String[] args) {
 		try {
 			HashMap<Integer, HashMap<String, String>> ranchiMap = XLSXtoHashMap_Row_Header.getConvertedMap(args[0]);
-			for (int i = 1; i < ranchiMap.size(); i++) {
+			System.out.println(ranchiMap.size());
+			String range[]=args[2].split("-");
+			for (int i = Integer.parseInt(range[0].trim()); i < Integer.parseInt(range[1].trim()); i++) {
 				System.out.println("********************************************");
 				System.out.println(i + "------>" + ranchiMap.get(i));
 				System.out.println(ranchiMap.get(i).get("Link2"));

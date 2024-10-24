@@ -35,7 +35,7 @@ public class MP_Trade_Lic_Download_Selenium {
     			driver.findElement(By.id("WD1A")).clear();
           //  }
 		} catch (Exception e) {
-			wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//span[contains(text(),'Service Not Available')]")));
+			//wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//span[contains(text(),'Service Not Available')]")));
 			driver.navigate().refresh();
 //			List<WebElement> list503=driver.findElements(By.xpath("//span[contains(text(),'Service Not Available')]"));
 //            if(list503.size()>=1)
