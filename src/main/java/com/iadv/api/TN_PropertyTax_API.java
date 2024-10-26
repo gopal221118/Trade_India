@@ -9,6 +9,12 @@ import static io.restassured.RestAssured.given;
 
 
 import java.io.FileWriter;
+import java.util.ArrayList;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 
 public class TN_PropertyTax_API {
@@ -34,5 +40,28 @@ public class TN_PropertyTax_API {
         }
 
         return resp;
+    }
+    
+    public static ArrayList<String> extractWardList(String resp)
+    {
+    	System.out.println(resp);
+    	ArrayList<String> tempwardlist = new ArrayList<String>();
+    	try
+    	{
+    		 Document doc = Jsoup.parse(resp);
+             Elements options = doc.select("#PageContent_drpward > option");
+
+             for (int i1 = 1; i1 < options.size(); i1++) {
+                 Element option = options.get(i1);
+                 String value = option.attr("value");
+                 if (!value.isEmpty()) {
+                	 tempwardlist.add(value);
+                 }
+             }
+    	}
+    	catch (Exception e) {
+    		e.printStackTrace();
+		}
+		return tempwardlist;
     }
 }
