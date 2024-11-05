@@ -8,11 +8,12 @@ import io.restassured.config.SSLConfig;
 import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TN_PropertyTax_API2 {
 
-    public static String getAPIResponse(String vsx,String evx,String etx,String muncipalcode,String ward_no) {
+    public static String getAPIResponse(String wardno, ArrayList<String> apivals) {
     	String resp="";
     	try
     	{
@@ -39,17 +40,17 @@ public class TN_PropertyTax_API2 {
                 .header("sec-gpc", "1")
                 .header("upgrade-insecure-requests", "1")
                 .header("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36")
-                .formParam("__EVENTTARGET", etx)
+                .formParam(apivals.get(0))
                 .formParam("__EVENTARGUMENT", "")
                 .formParam("__LASTFOCUS", "")
-                .formParam("__VIEWSTATE", vsx)
+                .formParam("__VIEWSTATE", apivals.get(1))
                 .formParam("__VIEWSTATEGENERATOR", "3B37067B")
                 .formParam("__VIEWSTATEENCRYPTED", "")
-                .formParam("__EVENTVALIDATION", evx)
+                .formParam("__EVENTVALIDATION", apivals.get(2))
                 .formParam("ctl00$alert_msg", "")
-                .formParam("ctl00$PageContent$drporg",muncipalcode)
+                .formParam("ctl00$PageContent$drporg",apivals.get(apivals.size()-2))
                 .formParam("ctl00$PageContent$txt_assementno", "")
-                .formParam("ctl00$PageContent$drpward", ward_no)
+                .formParam("ctl00$PageContent$drpward", wardno)
                 .formParam("ctl00$PageContent$txt_AssesseName", "")
                 .formParam("ctl00$PageContent$drppropetgrup", "--Select--")
                 .formParam("ctl00$PageContent$txtOldAssNo", "")
