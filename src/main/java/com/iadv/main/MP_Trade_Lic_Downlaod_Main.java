@@ -24,6 +24,8 @@ public class MP_Trade_Lic_Downlaod_Main {
 		options.setExperimentalOption("prefs", prefs);
 		WebDriver driver = new ChromeDriver(options);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait alertWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
 		try {
 			driver.get(args[0]);
 			driver.manage().window().maximize();
@@ -33,7 +35,7 @@ public class MP_Trade_Lic_Downlaod_Main {
 				System.out.println("****************************************************");
 				String currentdata = "8000" + i;
 				System.out.println(count + "---------------->" + currentdata);
-				MP_Trade_Lic_Download_Selenium.getSearchValues(driver, wait, currentdata, args[0]);
+				MP_Trade_Lic_Download_Selenium.getSearchValues(driver, wait,alertWait, currentdata, args[0]);
 				count++;
 				System.out.println("****************************************************");
 			}
