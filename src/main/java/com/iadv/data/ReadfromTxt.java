@@ -28,5 +28,4 @@ public class ReadfromTxt {
 	        }
 	        return lines; 
 	    }
-
 }
