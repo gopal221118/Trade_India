@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 public class TN_PropertyTax_API3 {
 
-    public static String getAPIResponse(String vs,String ev,String muncipalcode,String wardno,int pageno) {
+    public static String getAPIResponse(String vsx,String evx,String etx,String muncipalcode,String wardno,int pageno) {
     	String resp="";
     	try
     	{
@@ -36,13 +36,13 @@ public class TN_PropertyTax_API3 {
                 .header("sec-gpc", "1")
                 .header("upgrade-insecure-requests", "1")
                 .header("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36")
-                .formParam("__EVENTTARGET", "")
+                .formParam("__EVENTTARGET",etx)
                 .formParam("__EVENTARGUMENT", "Page$"+pageno)
                 .formParam("__LASTFOCUS", "")
-                .formParam("__VIEWSTATE", vs)
+                .formParam("__VIEWSTATE", vsx)
                 .formParam("__VIEWSTATEGENERATOR", "3B37067B")
                 .formParam("__VIEWSTATEENCRYPTED", "")
-                .formParam("__EVENTVALIDATION", ev)
+                .formParam("__EVENTVALIDATION", evx)
                 .formParam("ctl00$alert_msg", "")
                 .formParam("ctl00$PageContent$drporg",muncipalcode)
                 .formParam("ctl00$PageContent$txt_assementno", "")
