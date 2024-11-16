@@ -3,7 +3,6 @@ package com.iadv.extractor;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -15,7 +14,7 @@ public class TN_Trade_HTML_Extractor {
 	
 	public static HashMap<Integer, HashMap<String, String>> extractHTMLResponse(String response, CSVWriter writer)
 	{
-		HashMap<Integer, HashMap<String, String>> csvMap = new HashMap<>();
+		HashMap<Integer, HashMap<String, String>> csvMap = new HashMap<Integer, HashMap<String, String>>();
 		try
 		{
 	        Document document = Jsoup.parse(response); // Parse the HTML content
