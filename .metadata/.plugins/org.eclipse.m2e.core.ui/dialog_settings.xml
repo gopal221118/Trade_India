@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="D:\Trade\Trade_India"/>
 			<item value="E:\Eclipse_IDE\Trade_India"/>
 		</list>
 		<list key="projectNameTemplate">
