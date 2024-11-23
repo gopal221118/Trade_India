@@ -35,7 +35,7 @@ public class MP_Trade_Lic_Downlaod_Main {
 				System.out.println("****************************************************");
 				String currentdata = "8000" + i;
 				System.out.println(count + "---------------->" + currentdata);
-				MP_Trade_Lic_Download_Selenium.getSearchValues(driver, wait,alertWait, currentdata, args[0]);
+				//MP_Trade_Lic_Download_Selenium.getSearchValues(driver, wait,alertWait, currentdata, args[0]);
 				count++;
 				System.out.println("****************************************************");
 			}

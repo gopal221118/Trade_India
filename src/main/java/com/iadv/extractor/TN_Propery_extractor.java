@@ -88,7 +88,8 @@ public class TN_Propery_extractor {
                }
             	   for(int i=0;i<munci_no_with_ward_no.get(munci_nos).size();i++)
                     {
-            	       String response1=TN_PropertyTax_API2.getAPIResponse(vsx, evx,etx,ecode,munci_no_with_ward_no.get(munci_no).get(i));
+            		   String response1="";
+            	       //String response1=TN_PropertyTax_API2.getAPIResponse(vsx, evx,etx,ecode,munci_no_with_ward_no.get(munci_no).get(i));
             	       Document doc = Jsoup.parse(response1);
             	       Element element = doc.selectFirst("#asda > div:nth-child(2) > div:nth-child(2)>i");
 
