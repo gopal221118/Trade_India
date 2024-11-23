@@ -1,4 +1,12 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Build-Jdk-Spec: 17
+=======
+<<<<<<< HEAD
+Build-Jdk-Spec: 21
+=======
+Build-Jdk-Spec: 17
+>>>>>>> 6c1d9df9128aa4e66b10fa39b963d0d3514edba5
+>>>>>>> 8c4dbc6ec816e675871e7b71a3877234d945317c
 Created-By: Maven Integration for Eclipse
 
