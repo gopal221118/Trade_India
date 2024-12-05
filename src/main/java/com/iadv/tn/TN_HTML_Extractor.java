@@ -25,7 +25,7 @@ public class TN_HTML_Extractor {
 			try {
 				writer = new CSVWriter(new FileWriter(csvFile));
 				 writer.writeNext(new String[] {
-		                    "S.No", "Assessment No", "Old Assessment No", "Owner Name",
+		                   "ULB", "S.No", "Assessment No", "Old Assessment No", "Owner Name",
 		                    "Address", "Half Year Tax", "Balance Value", "Action"
 		                });
 				 } catch (IOException e) {
@@ -37,11 +37,13 @@ public class TN_HTML_Extractor {
 			for (String htmlpath : htmllists) {
 				System.out.println(htmlpath);
 				String fsource = HTMLSourcefromFile.getSouce(htmlpath);
+				String ulbval = extractTextBySelector(fsource,"#PageContent_drporg option[selected]");
 				int rowcount = HTML_RowCount_Generic.getRowCount(fsource, "#PageContent_dgvDetails > tbody > tr");
 				System.out.println(rowcount);
 				for (int i = 2; i < rowcount; i++) {
 					ArrayList<String> tempvals = new ArrayList<>();
 					try {
+						tempvals.add(ulbval);
 						Document doc = Jsoup.parse(fsource, "UTF-8");
 						Elements tds = doc.select("#PageContent_dgvDetails > tbody > tr:nth-child("+i+") > td");
 						for (Element td : tds) {
@@ -64,4 +66,13 @@ public class TN_HTML_Extractor {
 			e.printStackTrace();
 		}
 		}
+	
+	public static String extractTextBySelector(String html, String cssSelector) {
+        // Parse the HTML
+        Document document = Jsoup.parse(html);
+        // Select the element(s) using the CSS selector
+        Elements elements = document.select(cssSelector);
+        // Return the text of the first matching element, if present
+        return elements.isEmpty() ? null : elements.first().text();
+    }
 	}
